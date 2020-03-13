@@ -7,10 +7,15 @@ The Hough line detector finds lines in an image using opencv. The app converts t
 -t allows the user to enter the step size for theta (angles)
 
 Install/Configuration
+
 Copy all files in the manifest to the same folder
 
-python requires
+python requires...
 
 -opencv 4.0.1
 -numpy 1.18
+
+Execution
+
+python hough.py
  
