@@ -12,7 +12,7 @@ def get_args():
     optional = parser.add_argument_group('optional arguments')
     optional.add_argument("-v", help=v_desc, default=100)
     optional.add_argument("-i", help=i_desc, default='shapes.png')
-    optional.add_argument("-t", help=t_desc, default=10)
+    optional.add_argument("-t", help=t_desc, default=5)
     args = parser.parse_args()
     return args
 
