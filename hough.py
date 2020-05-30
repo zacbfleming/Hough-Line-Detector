@@ -20,7 +20,7 @@ def get_args():
 
 args = get_args()
 votes = args.v
-theta = np.pi/args.t
+theta = (np.pi/180) *args.t
 im = cv2.imread(args.i)
 cv2.imshow('shapes', im)
 cv2.waitKey(0)
