@@ -10,9 +10,9 @@ def get_args():
     parser._action_groups.pop()
     required = parser.add_argument_group('required arguments')
     optional = parser.add_argument_group('optional arguments')
-    optional.add_argument("-v", help=v_desc, default=110)
+    optional.add_argument("-v", help=v_desc, default=100)
     optional.add_argument("-i", help=i_desc, default='shapes.png')
-    optional.add_argument("-t", help=t_desc, default=90)
+    optional.add_argument("-t", help=t_desc, default=10)
     args = parser.parse_args()
     return args
 
@@ -44,7 +44,9 @@ for line in lines:
     y2 = int(y0 - 1000*(a))
     
     cv2.line(im, (x1, y1), (x2, y2), (0,255,0), 2)
-    
-cv2.imshow('Hough Lines', im)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+try:
+    cv2.imshow('Hough Lines', im)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+except:
+    print('Invalid selection, either the number of votes needs to be lwereed or theta. 100 votes and 10 degrees (default) typically produce the best results. Although, this depends on several variables')
