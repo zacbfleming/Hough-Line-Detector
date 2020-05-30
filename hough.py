@@ -32,21 +32,24 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 lines = cv2.HoughLines(img_edge, 1, theta, votes)
-for line in lines:
-    rho, theta = line[0]
-    a = np.cos(theta)
-    b =np.sin(theta)
-    x0 = a*rho
-    y0 = b * rho
-    x1 = int(x0+1000*(-b))
-    y1 = int(y0+1000*(a))
-    x2 = int(x0 - 1000*(-b))
-    y2 = int(y0 - 1000*(a))
-    
-    cv2.line(im, (x1, y1), (x2, y2), (0,255,0), 2)
 try:
-    cv2.imshow('Hough Lines', im)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    for line in lines:
+        rho, theta = line[0]
+        a = np.cos(theta)
+        b =np.sin(theta)
+        x0 = a*rho
+        y0 = b * rho
+        x1 = int(x0+1000*(-b))
+        y1 = int(y0+1000*(a))
+        x2 = int(x0 - 1000*(-b))
+        y2 = int(y0 - 1000*(a))
+    
+        cv2.line(im, (x1, y1), (x2, y2), (0,255,0), 2)
+    try:
+        cv2.imshow('Hough Lines', im)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    except:
+        print('Invalid selection, either the number of votes needs to be lwereed or theta. 100 votes and 10 degrees (default) typically produce the best results. Although, this depends on several variables')
 except:
-    print('Invalid selection, either the number of votes needs to be lwereed or theta. 100 votes and 10 degrees (default) typically produce the best results. Although, this depends on several variables')
+    print('Invalid selection. Change -t or -v. The current selection produced no lines.')
